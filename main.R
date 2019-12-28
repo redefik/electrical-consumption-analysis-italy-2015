@@ -28,3 +28,11 @@ data_summary <- data_understanding(data)
 # Finally, there are no missing values
 
 cleaned_data <- data_cleaning(data)
+
+# The measurements can be go wrong, thus an outlier analysis is performed
+bp <- boxplot(cleaned_data[,2], plot=FALSE)
+outliers <- bp$out
+outliers_fraction <- round(length(outliers)/nrow(cleaned_data),4)
+# The analysis results in no outliers
+
+
