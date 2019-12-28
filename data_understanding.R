@@ -20,9 +20,9 @@ data_understanding <- function(dataset) {
   missing_values <- length(Filter(isTRUE, is_missing))
   
   # Search for outliers
-  bp <- boxplot(cleaned_data, plot=FALSE)
+  bp <- boxplot(dataset[,2], plot=FALSE)
   outliers <- bp$out
-  outliers_fraction <- round(length(outliers)/nrow(cleaned_data),4)
+  outliers_fraction <- round(length(outliers)/nrow(dataset),4)
   
   # Assembling output
   output <- list(num_of_instances, num_of_fields, name_of_fields,
