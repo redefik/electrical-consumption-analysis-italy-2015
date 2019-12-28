@@ -1,11 +1,14 @@
-# Remove Solar Energy-related field from the dataset and remove missing values
+library(imputeTS)
+
+# Remove Solar Energy-related field from the dataset and handle missing values
 data_cleaning <- function(dataset) {
   cat("Data cleaning...\n")
-  # Remove observations dealing with solar energy consumption
-  out <- dataset[,-ncol(dataset)]
-  # Remove missing values
-  available_obs <- complete.cases(out)
-  out <- out[which(available_obs),]
+  # Data dealing with solar energy consumption are removed
+  # Missing values are handled. Namely:
+  # We cannot remove them
+  # For sake of simplicity we replace each missing observation with the Last
+  # Observation Carried Forward
+  replaced_missing <- na_locf(dataset[,2], option = "locf")
   cat("Done\n")
-  return(out)
+  return(replaced_missing)
 }

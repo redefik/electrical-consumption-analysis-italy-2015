@@ -16,12 +16,6 @@ data_understanding <- function(dataset) {
   num_of_duplicated <- length(Filter(isTRUE, is_dup))
   
   # Search for missing values
-  # count_missing <- function(values) {
-  #   is_missing <- !complete.cases(values)
-  #   return(length(Filter(isTRUE, is_missing)))
-  # }
-  # column_missing_values <- sapply(dataset, count_missing)
-  # missing_values <- sum(column_missing_values)
   is_missing <- !complete.cases(dataset)
   missing_values <- length(Filter(isTRUE, is_missing))
   
