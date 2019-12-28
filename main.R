@@ -27,12 +27,6 @@ data_summary <- data_understanding(data)
 # In this project we are interested in the total consumption only, thus we will
 # remove IT_solar_generation field.
 # data_summary shows that 359 observations are missing too
-# Finally, there are no duplicated values
+# Finally, there are no duplicated values and no outliers
 
 cleaned_data <- data_cleaning(data)
-
-# The measurements can be go wrong, thus an outlier analysis is performed
-bp <- boxplot(cleaned_data, plot=FALSE)
-outliers <- bp$out
-outliers_fraction <- round(length(outliers)/nrow(cleaned_data),4)
-# The analysis results in no outliers

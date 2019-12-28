@@ -19,11 +19,16 @@ data_understanding <- function(dataset) {
   is_missing <- !complete.cases(dataset)
   missing_values <- length(Filter(isTRUE, is_missing))
   
+  # Search for outliers
+  bp <- boxplot(cleaned_data, plot=FALSE)
+  outliers <- bp$out
+  outliers_fraction <- round(length(outliers)/nrow(cleaned_data),4)
+  
   # Assembling output
   output <- list(num_of_instances, num_of_fields, name_of_fields,
-                 num_of_duplicated, missing_values)
+                 num_of_duplicated, missing_values, outliers_fraction)
   names(output) <- c("Size", "Number of Fields", "Fields", "Num of duplicated",
-                     "Missing Values")
+                     "Missing Values", "Outliers fraction")
   cat("Done\n")
   return(output)
   
