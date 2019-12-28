@@ -9,6 +9,7 @@
 
 source("import_dataset.R")
 source("data_understanding.R")
+source("data_cleaning.R")
 
 # Import dataset
 data <- import_dataset("TimeSeries_TotalSolarGen_and_Load_IT_2015.csv")
@@ -23,4 +24,7 @@ data_summary <- data_understanding(data)
 # 3. IT_solar_generation: Solar power generation registered
 # In this project we are interested in the total consumption only, thus we will
 # remove IT_solar_generation field.
-# data_summary shows that 359 observations are missing
+# data_summary shows that 359 observations are missing too
+# Finally, there are no missing values
+
+cleaned_data <- data_cleaning(data)
